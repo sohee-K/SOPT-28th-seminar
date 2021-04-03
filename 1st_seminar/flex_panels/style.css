@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+  font-family: "Nanum Pen Script", cursive;
+}
+
+.panels {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  color: white;
+  flex: 1 0 auto;
+  transition: flex 0.7s;
+  overflow: inherit;
+}
+.panel:hover {
+  cursor: pointer;
+}
+
+.panel:nth-child(1) {
+  background: linear-gradient(90deg, #d8f5ff 0%, #00ddff 100%);
+}
+.panel:nth-child(2) {
+  background: linear-gradient(90deg, #00ddff 0%, #60a0ff 100%);
+}
+.panel:nth-child(3) {
+  background: linear-gradient(90deg, #60a0ff 0%, #8a77ff 100%);
+}
+.panel:nth-child(4) {
+  background: linear-gradient(90deg, #8a77ff 0%, #9400d3 100%);
+}
+
+.panel.open {
+  flex: 5;
+}
+
+p {
+  text-transform: uppercase;
+  text-align: center;
+  transition: transform 1.2s;
+  font-size: 3rem;
+  height: 5rem;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+}
+p:hover {
+  animation-name: glow;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+}
+
+.panel p:nth-child(1) {
+  transform: translateY(-200%);
+}
+.panel p:nth-child(3) {
+  transform: translateY(200%);
+}
+.panel.open p:nth-child(1),
+.panel.open p:nth-child(3) {
+  transform: translateY(0);
+}
+.panel p:nth-child(2) {
+  font-size: 4rem;
+}
+.panel.open p:nth-child(2) {
+  font-size: 5rem;
+  transition: font-size 1.2s;
+  animation-name: glow;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes glow {
+  0% {
+  }
+  20% {
+    text-shadow: 0 0 2rem lightyellow, 0 0 6rem white;
+  }
+  100% {
+    text-shadow: 0 0 0.1rem lightyellow;
+  }
+}
