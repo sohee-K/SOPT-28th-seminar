@@ -1,0 +1,16 @@
+body {
+  display: flex;
+}
+
+.bucket {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  margin: 20px;
+}
+
+#cat {
+  width: 200px;
+  height: 200px;
+  z-index: 1;
+}

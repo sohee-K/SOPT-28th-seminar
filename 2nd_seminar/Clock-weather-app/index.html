@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script defer src="clock.js"></script>
+    <script defer src="weather.js"></script>
+    <script defer src="calendar.js"></script>
+    <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
+    <div class="header"></div>
+    <div class="main">
+      <div class="clock">
+        <div class="analog">
+          <div class="analog_clock">
+            <div class="analog_hour"></div>
+            <div class="analog_minute"></div>
+            <div class="analog_second"></div>
+            <p>12</p>
+          </div>
+        </div>
+        <div class="digital">
+          <div class="digital_time"></div>
+          <button class="digital_button">AM</button>
+        </div>
+      </div>
+      <div class="calendar">
+        <div class="calendar_header"></div>
+        <div class="calendar_day"></div>
+        <div class="calendar_date"></div>
+      </div>
+      <div class="weather">
+        <div class="weather_top">
+          <canvas id="weather_icon"></canvas>
+          <div class="weather_top_right">
+            <div class="weather_temperature"></div>
+            <div class="weather_main"></div>
+          </div>
+        </div>
+        <div class="weather_bottom">
+          <div class="weather_temps"></div>
+          <div class="weather_others"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
