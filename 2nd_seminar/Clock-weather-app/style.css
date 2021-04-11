@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: skyblue;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  font-size: 60px;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.header > span {
+  color: red;
+}
+
+.digital {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.digital_time {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.digital_button {
+  color: white;
+  background-color: skyblue;
+  border: 1px solid white;
+  padding: 5px;
+  margin-left: 10px;
+  margin-bottom: 11px;
+  height: 36px;
+  width: 50px;
+  font-size: 20px;
+}
