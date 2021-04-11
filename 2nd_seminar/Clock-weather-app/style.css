@@ -32,8 +32,7 @@ body {
 }
 
 .digital_time {
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 30px;
 }
 
 .digital_button {
@@ -42,10 +41,13 @@ body {
   border: 1px solid white;
   padding: 5px;
   margin-left: 10px;
-  margin-bottom: 11px;
-  height: 36px;
-  width: 50px;
-  font-size: 20px;
+  margin-bottom: 4px;
+  height: 28px;
+  width: 36px;
+  font-size: 16px;
+}
+.digital_button:focus {
+  outline: none;
 }
 
 .analog_clock {
@@ -53,7 +55,7 @@ body {
   height: 200px;
   border-radius: 100px;
   background-color: white;
-  margin: 30px auto;
+  margin: 10px auto;
 }
 
 .analog_clock > p {
@@ -100,36 +102,46 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 100px;
 }
 
 .main {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 100px;
 }
 
 .weather {
   display: flex;
   flex-direction: column;
+  margin-left: 100px;
 }
 
 .weather_top {
   display: flex;
   flex-direction: row;
-  margin-bottom: 20px;
   align-items: flex-end;
   justify-content: center;
+}
+
+.weather_top_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  height: 180px;
+  margin-left: 10px;
+  margin-bottom: 20px;
 }
 
 .weather_temperature {
   font-size: 48px;
   font-weight: bold;
+  margin-bottom: 15px;
 }
 
 .weather_main {
   font-size: 32px;
-  margin-left: 30px;
   text-align: bottom;
 }
 
@@ -143,4 +155,9 @@ body {
 .weather_temps > span,
 .weather_others > span {
   color: lightgray;
+}
+
+.weather_icon > img {
+  width: 180px;
+  height: 180px;
 }

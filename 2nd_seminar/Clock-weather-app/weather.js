@@ -1,7 +1,8 @@
 const weatherTemperature = document.querySelector(".weather_temperature"),
   weatherMain = document.querySelector(".weather_main"),
   weatherTemps = document.querySelector(".weather_temps"),
-  weatherOthers = document.querySelector(".weather_others");
+  weatherOthers = document.querySelector(".weather_others"),
+  weatherIcon = document.querySelector(".weather_icon");
 
 const key = "ba4223b1f0c4f7e2cff0dc9034b3f91e"; // API 발급받은 key값
 
@@ -19,6 +20,7 @@ function drawWeather(weather) {
     weatherOthers.innerHTML = `<span>Humidity:</span> ${weather.hum} % &nbsp;&nbsp;
     <span>Wind:</span> ${weather.wind} m/s`;
   }
+  weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weather.icon}@2x.png" alt="icon" />`;
 }
 
 const getWeatherData = async (lat, lon) => {
@@ -38,6 +40,7 @@ const getWeatherData = async (lat, lon) => {
     wind: weatherData.wind.speed,
     id: weatherData.weather[0].id, // 나중에 아이콘 사용하기 위한 용도
     rain: weatherData.rain ? weatherData.rain["1h"] : null, // 비가 올 때만 데이터가 들어있음
+    icon: weatherData.weather[0].icon,
   };
 
   drawWeather(weather);
