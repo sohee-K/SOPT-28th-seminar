@@ -135,7 +135,6 @@ body {
   justify-content: center;
   align-items: left;
   height: 180px;
-  margin-left: 10px;
   margin-bottom: 20px;
 }
 
@@ -162,7 +161,6 @@ body {
   color: lightgray;
 }
 
-.weather_icon > img {
-  width: 180px;
-  height: 180px;
+#weather_icon {
+  margin-bottom: 30px;
 }

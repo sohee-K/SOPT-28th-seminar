@@ -1,12 +1,58 @@
 const weatherTemperature = document.querySelector(".weather_temperature"),
   weatherMain = document.querySelector(".weather_main"),
   weatherTemps = document.querySelector(".weather_temps"),
-  weatherOthers = document.querySelector(".weather_others"),
-  weatherIcon = document.querySelector(".weather_icon");
+  weatherOthers = document.querySelector(".weather_others");
 
 const key = "ba4223b1f0c4f7e2cff0dc9034b3f91e"; // API 발급받은 key값
 
-function drawWeather(weather) {
+const drawIcon = (id) => {
+  const skycons = new Skycons({ color: "white", resizeClear: true });
+  skycons.add("weather_icon", Skycons.CLOUDY);
+
+  const code = parseInt(id / 100); // id 번호에 따라 날씨가 분류됨
+  const hour = new Date().getHours();
+
+  switch (code) {
+    case 2:
+      skycons.set("weather_icon", Skycons.WIND);
+      break;
+    case 3:
+    case 5:
+      skycons.set("weather_icon", Skycons.RAIN);
+      break;
+    case 6:
+      skycons.set("weather_icon", Skycons.SNOW);
+      break;
+    case 7:
+      skycons.set("weather_icon", Skycons.FOG);
+      break;
+    case 8:
+      switch (id) {
+        case 800:
+          if (hour >= 6 && hour <= 17)
+            skycons.set("weather_icon", Skycons.CLEAR_DAY);
+          else skycons.set("weather_icon", Skycons.CLEAR_NIGHT);
+          break;
+        case 801:
+        case 802:
+          if (hour >= 6 && hour <= 17)
+            skycons.set("weather_icon", Skycons.PARTLY_CLOUDY_DAY);
+          else skycons.set("weather_icon", Skycons.PARTLY_CLOUDY_NIGHT);
+          break;
+        case 803:
+        case 804:
+          skycons.set("weather_icon", Skycons.CLOUDY);
+          break;
+      }
+      break;
+    default:
+      skycons.set("weather_icon", Skycons.SLEET);
+      break;
+  }
+  skycons.play();
+};
+
+const drawWeather = (weather) => {
   weatherTemperature.innerHTML = `${weather.temp} °C`;
   weatherMain.innerHTML = `${weather.main}`;
   weatherTemps.innerHTML = `<span>Feels:</span> ${weather.tempFeel} °C &nbsp;&nbsp;
@@ -20,8 +66,9 @@ function drawWeather(weather) {
     weatherOthers.innerHTML = `<span>Humidity:</span> ${weather.hum} % &nbsp;&nbsp;
     <span>Wind:</span> ${weather.wind} m/s`;
   }
-  weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weather.icon}@2x.png" alt="icon" />`;
-}
+
+  drawIcon(weather.id);
+};
 
 const getWeatherData = async (lat, lon) => {
   const data = await fetch(

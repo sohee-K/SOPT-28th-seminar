@@ -9,6 +9,7 @@
   <body>
     <script defer src="clock.js"></script>
     <script defer src="weather.js"></script>
+    <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
     <div class="header"></div>
     <div class="main">
       <div class="clock">
@@ -27,7 +28,7 @@
       </div>
       <div class="weather">
         <div class="weather_top">
-          <div class="weather_icon"></div>
+          <canvas id="weather_icon"></canvas>
           <div class="weather_top_right">
             <div class="weather_temperature"></div>
             <div class="weather_main"></div>
