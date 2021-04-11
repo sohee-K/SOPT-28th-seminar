@@ -102,3 +102,45 @@ body {
   align-items: center;
   margin-bottom: 100px;
 }
+
+.main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.weather {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather_top {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.weather_temperature {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.weather_main {
+  font-size: 32px;
+  margin-left: 30px;
+  text-align: bottom;
+}
+
+.weather_temps,
+.weather_others {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.weather_temps > span,
+.weather_others > span {
+  color: lightgray;
+}
