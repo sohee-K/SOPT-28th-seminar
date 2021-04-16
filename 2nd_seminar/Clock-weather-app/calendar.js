@@ -21,7 +21,7 @@ const getStartDay = (date, day) => {
   if (date > day) {
     date %= 7;
     if (date === 0) day += 1;
-    else day = day - date + 8;
+    else day = (day - date + 8) % 7;
   }
   return day;
 };
