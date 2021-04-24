@@ -1,17 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "./components/SearchBar";
 import ResultCard from "./components/ResultCard";
 import { getUserData } from "./lib/api/githubAPI";
 
 function App() {
+  const [userData, setUserData] = useState("");
+
+  const getUser = async (name) => {
+    const data = await getUserData(name);
+    setUserData(data);
+  };
+
   useEffect(() => {
-    getUserData("sohee-K");
+    getUser("sohee-K");
   }, []);
 
   return (
     <>
       <SearchBar />
-      <ResultCard />
+      <ResultCard data={userData} />
     </>
   );
 }
