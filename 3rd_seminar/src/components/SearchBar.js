@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
-const SearchBar = () => {
+const SearchBar = ({ getUser }) => {
+  const [userName, setUserName] = useState("");
+
+  const handleChange = (event) => {
+    setUserName(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    getUser(userName);
+    setUserName("");
+  };
+
   return (
-    <form>
-      <input type="text" placeholder="GitHub ID를 입력하세요" />
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="GitHub ID를 입력하세요"
+        value={userName}
+        onChange={handleChange}
+      />
     </form>
   );
 };

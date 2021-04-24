@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import ResultCard from "./components/ResultCard";
 import { getUserData } from "./lib/api/githubAPI";
@@ -11,13 +11,9 @@ function App() {
     setUserData(data);
   };
 
-  useEffect(() => {
-    getUser("sohee-K");
-  }, []);
-
   return (
     <>
-      <SearchBar />
+      <SearchBar getUser={getUser} />
       <ResultCard data={userData} />
     </>
   );
