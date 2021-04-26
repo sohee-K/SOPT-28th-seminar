@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SearchBar from "./components/SearchBar";
-import ResultCard from "./components/ResultCard";
+import Result from "./components/Result";
 import { getUserData } from "./lib/api/githubAPI";
 import Styled from "styled-components";
 
@@ -13,17 +13,27 @@ const MainWrap = Styled.div`
 `;
 
 function App() {
-  const [userData, setUserData] = useState("");
+  const [userState, setUserState] = useState({
+    status: "idle",
+    data: null,
+  });
 
   const getUser = async (name) => {
-    const data = await getUserData(name);
-    setUserData(data);
+    setUserState({ ...userState, status: "pending" });
+    try {
+      const data = await getUserData(name);
+      if (data === null) throw Error;
+      setUserState({ status: "resolved", data: data });
+    } catch (e) {
+      setUserState({ status: "rejected", data: null });
+      console.log(e);
+    }
   };
 
   return (
     <MainWrap>
       <SearchBar getUser={getUser} />
-      <ResultCard data={userData} />
+      <Result userState={userState} />
     </MainWrap>
   );
 }

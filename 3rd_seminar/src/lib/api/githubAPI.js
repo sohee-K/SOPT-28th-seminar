@@ -11,5 +11,6 @@ export const getUserData = async (name) => {
     return data;
   } catch (e) {
     console.log("[FAIL] GET user data", e);
+    return null;
   }
 };
