@@ -11,6 +11,17 @@ const CardWrap = Styled.div`
     background-color: #231E39;
     border-radius: 10px;
     overflow: hidden;
+    animation-name: comingDown;
+    animation-duration: 1s;
+  }
+  @keyframes comingDown {
+    from {
+      transform: translateY(-10%);
+      opacity: 0;
+    } to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
   .result_image {
     box-sizing: border-box;
