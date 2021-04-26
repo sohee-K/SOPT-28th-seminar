@@ -9,7 +9,8 @@ const CardWrap = Styled.div`
     color: white;
     width: 390px;
     background-color: #231E39;
-    border-radius: 5px;
+    border-radius: 10px;
+    overflow: hidden;
   }
   .result_image {
     box-sizing: border-box;
@@ -34,6 +35,20 @@ const CardWrap = Styled.div`
     text-align: center;
     margin: 20px auto;
   }
+  .result_link {
+    text-decoration: none;
+    color: gold;
+    background-color: none;
+    border: 2px solid gold;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 2px 5px;
+    margin-bottom: 20px;
+  }
+  .result_link:hover {
+    background-color: gold;
+    color: #231E39;
+  }
   .result_list {
     display: flex;
     flex-direction: row;
@@ -44,12 +59,16 @@ const CardWrap = Styled.div`
     color: #231E39;
     text-align: center;
     font-size: 18px;
-    border: 1px solid #231E39;
     box-sizing: border-box;
     padding: 5px;
   }
   .list_content {
     font-size: 24px;
+    font-weight: bold;
+  }
+  .content_border {
+    border-left: 2px solid #231E39;
+    border-right: 2px solid #231E39;
   }
 `;
 
@@ -62,11 +81,20 @@ const ResultCard = ({ data }) => {
           <p className="result_name">{data.name}</p>
           <p className="result_id">{data.login}</p>
           <p className="result_bio">{data.bio}</p>
+          <a
+            className="result_link"
+            href={data.html_url}
+            alt=""
+            target="_blank"
+            rel="noreferrer"
+          >
+            Visit GitHub
+          </a>
           <div className="result_list">
             <div className="list_title">
               Followers<div className="list_content">{data.followers}</div>
             </div>
-            <div className="list_title">
+            <div className="list_title content_border">
               Following<div className="list_content">{data.following}</div>
             </div>
             <div className="list_title">

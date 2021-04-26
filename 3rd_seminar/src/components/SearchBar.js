@@ -18,6 +18,18 @@ const SearchBarWrap = Styled.div`
   input:focus {
     outline: none;
   }
+
+  form {
+    display: flex;
+    justify-content: center;
+  }
+
+  h2 {
+    color: white;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
 `;
 
 const SearchBar = ({ getUser }) => {
@@ -35,6 +47,7 @@ const SearchBar = ({ getUser }) => {
 
   return (
     <SearchBarWrap>
+      <h2>GitHub Profile Finder</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
