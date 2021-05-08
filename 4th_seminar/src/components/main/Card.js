@@ -45,7 +45,7 @@ const CardWrap = Styled.div`
       font-size: 18px;
       height: 25px;
       margin: 0 12px;
-      text-align: center;
+      text-align: left;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -101,7 +101,7 @@ const Card = ({ props }) => {
           <div className="card__top--date">{getDateFormat(date)}</div>
           <div className="card__top--weather">{weather}</div>
         </div>
-        <div className="card__title">{title}</div>
+        <div className="card__title">{title ? title : "제목 없음"}</div>
         <div className="card__tags">
           {tags.map((tag, index) => {
             return (
