@@ -10,10 +10,10 @@ import Diary from "./pages/Diary";
 function App() {
   return (
     <>
-      <MainHeader />
-      <Calendar />
-      <Title />
       <BrowserRouter>
+        <MainHeader />
+        <Calendar />
+        <Title />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/diary" component={Diary} />
