@@ -35,12 +35,9 @@ const CardWrap = Styled.div`
 
 const Card = ({ data, rawData, year, month, match, history }) => {
   const isReadOnly = match.path === "/diary/:id" ? true : false;
-  const [state, setState] = React.useState({
-    title: data.title,
-    weather: data.weather,
-    summary: data.summary,
-    text: data.text,
-  });
+  const id = parseInt(match.params.id);
+
+  const [state, setState] = React.useState(data);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -50,16 +47,18 @@ const Card = ({ data, rawData, year, month, match, history }) => {
     });
   };
 
-  const handleEdit = () => {
+  const handleEdit = async () => {
+    const index = rawData[year][month].findIndex((data) => data.id === id);
+    rawData[year][month][index] = state;
+    const data = await createCardData(rawData);
+    console.log(data);
     history.goBack();
   };
 
   const handleDelete = async () => {
-    const id = parseInt(match.params.id);
     const filteredList = rawData[year][month].filter((data) => data.id !== id);
-    const newData = rawData;
-    newData[year][month] = filteredList;
-    const data = await createCardData(newData);
+    rawData[year][month] = filteredList;
+    const data = await createCardData(rawData);
     history.goBack();
   };
 

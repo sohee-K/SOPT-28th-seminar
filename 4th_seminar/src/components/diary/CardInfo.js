@@ -74,7 +74,6 @@ const CardInfoWrap = Styled.div`
       width: 236px;
       height: 30px;
       box-sizing: border-box;
-      background-color: #EFEFEF;
       border: none;
       font-size: 18px;
     }
@@ -166,7 +165,7 @@ const CardInfo = ({ data, isReadOnly, state, handleChange }) => {
           ) : (
             <input
               type="text"
-              readOnly={isReadOnly}
+              readOnly={true}
               value=""
               placeholder="태그를 선택해주세요"
             />
@@ -181,6 +180,7 @@ const CardInfo = ({ data, isReadOnly, state, handleChange }) => {
           value={state.summary}
           onChange={handleChange}
           readOnly={isReadOnly}
+          style={{ backgroundColor: isReadOnly ? "white" : "#EFEFEF" }}
         />
       </div>
     </CardInfoWrap>
