@@ -51,7 +51,9 @@ const CardHeaderWrap = Styled.div`
 const CardHeader = ({ title, handleChange, isReadOnly, match, history }) => {
   const id = match.params.id;
 
-  const handleEdit = () => {};
+  const handleEdit = () => {
+    history.goBack();
+  };
 
   return (
     <CardHeaderWrap>

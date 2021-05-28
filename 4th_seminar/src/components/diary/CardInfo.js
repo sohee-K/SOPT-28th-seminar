@@ -32,9 +32,6 @@ const BootstrapInput = withStyles((theme) => ({
       boxShadow: "0 0 0 0.2rem rgba(206,160,227,.25)",
     },
   },
-  icon: {
-    display: "none",
-  },
 }))(InputBase);
 
 const CardInfoWrap = Styled.div`
