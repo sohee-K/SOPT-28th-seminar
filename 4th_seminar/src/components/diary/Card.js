@@ -3,6 +3,7 @@ import Styled from "styled-components";
 import CardHeader from "./CardHeader";
 import CardInfo from "./CardInfo";
 import { withRouter } from "react-router-dom";
+import { createCardData } from "../../lib/api";
 
 const CardWrap = Styled.div`
   width: 785px;
@@ -32,7 +33,7 @@ const CardWrap = Styled.div`
   }
 `;
 
-const Card = ({ data, match }) => {
+const Card = ({ data, rawData, year, month, match, history }) => {
   const isReadOnly = match.path === "/diary/:id" ? true : false;
   const [state, setState] = React.useState({
     title: data.title,
@@ -49,12 +50,27 @@ const Card = ({ data, match }) => {
     });
   };
 
+  const handleEdit = () => {
+    history.goBack();
+  };
+
+  const handleDelete = async () => {
+    const id = parseInt(match.params.id);
+    const filteredList = rawData[year][month].filter((data) => data.id !== id);
+    const newData = rawData;
+    newData[year][month] = filteredList;
+    const data = await createCardData(newData);
+    history.goBack();
+  };
+
   return (
     <CardWrap>
       <CardHeader
         title={state.title}
         handleChange={handleChange}
         isReadOnly={isReadOnly}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
       />
       <CardInfo
         data={data}
