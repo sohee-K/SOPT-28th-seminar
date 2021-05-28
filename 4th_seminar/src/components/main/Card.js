@@ -9,6 +9,9 @@ const CardWrap = Styled.div`
     height: 257px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
+    &:hover {
+      cursor: pointer;
+    }
     
     &__image {
       width: 220px;
@@ -79,17 +82,17 @@ const CardWrap = Styled.div`
 `;
 
 const getDateFormat = (date) => {
-  const year = parseInt((date % 10000) / 100);
+  const month = parseInt((date % 10000) / 100);
   const day = date % 100;
-  return `${year}월 ${day}일`;
+  return `${month}월 ${day}일`;
 };
 
-const Card = ({ props }) => {
+const Card = ({ props, onClickFunc }) => {
   const { date, title, image, weather, tags } = props;
 
   return (
     <CardWrap>
-      <div className="card">
+      <div className="card" onClick={onClickFunc}>
         <div className="card__image">
           {image ? (
             <img className="card__image--photo" src={image} alt="" />

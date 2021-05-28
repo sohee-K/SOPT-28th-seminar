@@ -33,9 +33,10 @@ const getDate = () => {
   return parseInt(year + monthF + dayF);
 };
 
-const NewCard = ({ year, month, rawData, setUserData }) => {
+const NewCard = ({ id, year, month, rawData, setUserData }) => {
   const createCard = async () => {
     const cardForm = {
+      id: id,
       date: getDate(),
       title: "",
       image: "",
