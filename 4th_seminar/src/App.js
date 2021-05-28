@@ -36,10 +36,12 @@ function App() {
             component={() => <Main year={year} month={month} />}
           />
           <Route
+            exact
             path="/diary/:id"
             component={() => <Diary year={year} month={month} />}
           />
           <Route
+            exact
             path="/diary/edit/:id"
             component={() => <Diary year={year} month={month} />}
           />

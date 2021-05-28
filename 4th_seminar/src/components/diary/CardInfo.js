@@ -55,11 +55,11 @@ const CardInfoWrap = Styled.div`
       margin-left: 50px;
     }
     &__date {
-      margin: 15px auto 25px auto;
+      margin: 20px auto 25px auto;
     }
     &__tags {
       display: flex;
-      margin: 21px 0 24px 0;
+      margin: 25px 0;
       &--tag {
         font-size: 14px;
         color: white;
@@ -79,7 +79,6 @@ const CardInfoWrap = Styled.div`
       box-sizing: border-box;
       background-color: #EFEFEF;
       border: none;
-      padding: 2px;
       font-size: 18px;
     }
   }
@@ -109,21 +108,9 @@ const getDateFormat = (date) => {
   return `${year}년 ${month}월 ${day}일`;
 };
 
-const CardInfo = ({ data, isReadOnly }) => {
+const CardInfo = ({ data, isReadOnly, state, handleChange }) => {
   const classes = useStyles();
-  const { image, date, weather, tags, summary } = data;
-  const [state, setState] = React.useState({
-    weather: weather,
-    summary: summary,
-  });
-
-  const handleChange = (event) => {
-    const name = event.target.name;
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
-  };
+  const { image, date, weather, tags } = data;
 
   return (
     <CardInfoWrap>
@@ -197,7 +184,6 @@ const CardInfo = ({ data, isReadOnly }) => {
           value={state.summary}
           onChange={handleChange}
           readOnly={isReadOnly}
-          style={isReadOnly && { backgroundColor: "white" }}
         />
       </div>
     </CardInfoWrap>
