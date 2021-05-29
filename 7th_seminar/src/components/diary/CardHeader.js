@@ -1,5 +1,6 @@
 import React from "react";
 import Styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 const CardHeaderWrap = Styled.div`
   display: flex;
@@ -45,7 +46,15 @@ const CardHeaderWrap = Styled.div`
   }
 `;
 
-const CardHeader = ({ title, isReadOnly, handleChange }) => {
+const CardHeader = ({
+  title,
+  isReadOnly,
+  handleChange,
+  handleEdit,
+  match,
+  history,
+}) => {
+  const id = match.params.id;
   return (
     <CardHeaderWrap>
       <input
@@ -58,10 +67,21 @@ const CardHeader = ({ title, isReadOnly, handleChange }) => {
         onChange={handleChange}
       />
       <div className="header__empty"></div>
-      <button className="header__edit">수정</button>
-      <button className="header__delete">삭제</button>
+      {isReadOnly ? (
+        <button
+          className="header__edit"
+          onClick={() => history.push(`/diary/edit/${id}`)}
+        >
+          수정
+        </button>
+      ) : (
+        <button className="header__edit" onClick={handleEdit}>
+          완료
+        </button>
+      )}
+      {isReadOnly ? <button className="header__delete">삭제</button> : ""}
     </CardHeaderWrap>
   );
 };
 
-export default CardHeader;
+export default withRouter(CardHeader);
