@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../components/main/Card";
+import NewCard from "../components/main/NewCard";
 import Styled from "styled-components";
 import { getCardData } from "../lib/api";
 
@@ -27,6 +28,12 @@ const Main = ({ year, month }) => {
         userData.map((data, index) => {
           return <Card key={index} props={data} />;
         })}
+      <NewCard
+        year={year}
+        month={month}
+        rawData={rawData}
+        setUserData={setUserData}
+      />
     </MainWrap>
   );
 };
