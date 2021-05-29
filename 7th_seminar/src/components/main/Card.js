@@ -3,7 +3,7 @@ import Styled from "styled-components";
 import EmptyImage from "../../assets/Image.svg";
 
 const CardWrap = Styled.div`
-  /* .card {
+  .card {
     box-sizing: border-box;
     width: 220px;
     height: 257px;
@@ -77,7 +77,7 @@ const CardWrap = Styled.div`
         overflow: hidden;
         text-overflow: ellipsis;
       }
-    } */
+    }
 }
 `;
 
