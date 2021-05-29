@@ -35,8 +35,14 @@ function App() {
             path="/"
             component={() => <Main year={year} month={month} />}
           />
-          <Route path="/diary/:id" component={Diary} />
-          <Route path="/diary/edit/:id" component={Diary} />
+          <Route
+            path="/diary/:id"
+            component={() => <Diary year={year} month={month} />}
+          />
+          <Route
+            path="/diary/edit/:id"
+            component={() => <Diary year={year} month={month} />}
+          />
         </Switch>
       </BrowserRouter>
       <Footer />
