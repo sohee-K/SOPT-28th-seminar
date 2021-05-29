@@ -53,6 +53,13 @@ const Card = ({ data, match, history, rawData, year, month }) => {
     history.goBack();
   };
 
+  const handleDelete = async () => {
+    const filteredList = rawData[year][month].filter((data) => data.id !== id);
+    rawData[year][month] = filteredList;
+    const data = await createCardData(rawData);
+    history.goBack();
+  };
+
   return (
     <CardWrap>
       <CardHeader
@@ -60,6 +67,7 @@ const Card = ({ data, match, history, rawData, year, month }) => {
         isReadOnly={isReadOnly}
         handleChange={handleChange}
         handleEdit={handleEdit}
+        handleDelete={handleDelete}
       />
       <CardInfo
         data={state}
