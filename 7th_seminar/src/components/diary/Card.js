@@ -33,7 +33,7 @@ const CardWrap = Styled.div`
   }
 `;
 
-const Card = ({ data, match, history, rawData, year, month }) => {
+const Card = ({ data, match, history, setRawData, rawData, year, month }) => {
   const isReadOnly = match.path === "/diary/:id" ? true : false;
   const [state, setState] = React.useState(data);
   const id = parseInt(match.params.id);
@@ -48,15 +48,17 @@ const Card = ({ data, match, history, rawData, year, month }) => {
 
   const handleEdit = async () => {
     const index = rawData[year][month].findIndex((data) => data.id === id);
-    rawData[year][month][index] = state;
-    const data = await createCardData(rawData);
+    const newList = rawData[year].filter((data) => data);
+    newList[month][index] = state;
+    const data = await createCardData({ ...rawData, [year]: newList });
     history.goBack();
   };
 
   const handleDelete = async () => {
     const filteredList = rawData[year][month].filter((data) => data.id !== id);
-    rawData[year][month] = filteredList;
-    const data = await createCardData(rawData);
+    const newList = rawData[year].filter((data) => data);
+    newList[month] = filteredList;
+    const data = await createCardData({ ...rawData, [year]: newList });
     history.goBack();
   };
 
